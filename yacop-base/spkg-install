@@ -1,0 +1,47 @@
+#!/bin/sh
+
+set -e
+
+tar xzf tcl*gz
+tar xzf tk*gz
+tar xzf Tkynter*gz
+
+export CFLAGS="$CFLAGS -DSQLITE_USE_URI=1"
+
+echo "Compiling Tcl"
+(cd tcl*/unix 
+    ./configure --prefix=$SAGE_LOCAL --libdir=$SAGE_LOCAL/lib --enable-threads 
+    make
+    make install
+    )
+
+echo "Compiling Tk"
+(cd tk*/unix 
+    ./configure --with-tcl=$SAGE_LOCAL/lib --libdir=$SAGE_LOCAL/lib --enable-aqua
+    make
+    make install
+    )
+
+echo "Compiling Tkynter (Yacop version of Tkinter)"
+(cd Tkynter-1.0
+    $SAGE_LOCAL/bin/python setup.py install
+    )
+
+echo "Compiling Steenrod Tcl library"
+tar xzf Steenrod*tar.gz
+(cd steenrod*
+    ./configure --with-tcl=$SAGE_LOCAL/lib  --libdir=$SAGE_LOCAL/lib
+    make
+    make install
+    )
+
+#echo "Installing BWidget-1.8.0"
+#cp -rf BWidget-1.8.0 $SAGE_LOCAL/lib 
+echo "Installing BWidget"
+tar xzf bwidget* -C $SAGE_LOCAL/lib
+
+echo "Installing pdf4tcl"
+tar xzf pdf4tcl* -C $SAGE_LOCAL/lib
+
+echo "Done"
+
