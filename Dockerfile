@@ -1,4 +1,5 @@
-FROM sagemath/sagemath
+ARG SAGE_VERSION
+FROM sagemath/sagemath:$SAGE_VERSION
 
 LABEL maintainer="Christian Nassau <nassau@nullhomotopie.de>"
 
@@ -11,7 +12,8 @@ WORKDIR /home/sage
 ADD --chown=sage yacop-base /tmp/yacop-base
 RUN echo "Installing the Steenrod library and its dependencies" \
     && cd /tmp/yacop-base && sage -sh spkg-install \
-    && echo "quit();" | sage \
+    && echo "Starting Sage once" && echo "quit();" | sage \
+    && echo "Cleaning up" \
     && rm -rf /tmp/* \
     && sync 
 
