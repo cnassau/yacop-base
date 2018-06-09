@@ -8,6 +8,9 @@ tar xzf Tkynter*gz
 
 export CFLAGS="$CFLAGS -DSQLITE_USE_URI=1"
 
+# fix PATH: Tk's configure needs /usr/bin/pkg-config, not the one under $SAGE_LOCAL/bin
+export PATH="/usr/bin:$PATH"
+
 echo "Compiling Tcl"
 (cd tcl*/unix 
     ./configure --prefix=$SAGE_LOCAL --libdir=$SAGE_LOCAL/lib --enable-threads 
