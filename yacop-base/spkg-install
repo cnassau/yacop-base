@@ -27,7 +27,7 @@ echo "Compiling Tk"
 
 echo "Compiling Tkynter (Yacop version of Tkinter)"
 (cd Tkynter-1.0
-    $SAGE_LOCAL/bin/python setup.py install
+    $SAGE_LOCAL/bin/python3 setup.py install
     )
 
 echo "Compiling Steenrod Tcl library"
