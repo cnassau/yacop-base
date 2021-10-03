@@ -4,7 +4,6 @@ set -e
 
 tar xzf tcl*gz
 tar xzf tk*gz
-tar xzf Tkynter*gz
 
 export CFLAGS="$CFLAGS -DSQLITE_USE_URI=1"
 
@@ -25,8 +24,9 @@ echo "Compiling Tk"
     make install
     )
 
-echo "Compiling Tkynter (Yacop version of Tkinter)"
-(cd Tkynter-1.0
+echo "Compiling Tkinter"
+(cd tkinter-1.0
+    rm -rf build || true
     $SAGE_LOCAL/bin/python3 setup.py install
     )
 
