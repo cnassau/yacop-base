@@ -11,21 +11,21 @@ export CFLAGS="$CFLAGS -DSQLITE_USE_URI=1"
 export PATH="/usr/bin:$PATH"
 
 echo "Compiling Tcl"
-(cd tcl*/unix 
+(cd tcl8*/unix 
     ./configure --prefix=$SAGE_LOCAL --libdir=$SAGE_LOCAL/lib --enable-threads 
     make
     make install
     )
 
 echo "Compiling Tk"
-(cd tk*/unix 
+(cd tk8*/unix 
     ./configure --with-tcl=$SAGE_LOCAL/lib --libdir=$SAGE_LOCAL/lib --enable-aqua
     make
     make install
     )
 
 echo "Compiling Tkinter"
-(cd tkinter-1.0
+(cd tkinter*
     rm -rf build || true
     $SAGE_LOCAL/bin/python3 setup.py install
     )
