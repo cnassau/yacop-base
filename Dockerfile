@@ -21,5 +21,4 @@ RUN echo "Installing the Steenrod library and its dependencies" \
     && rm -rf /tmp/* \
     && sync 
 
-ENTRYPOINT [ "sage-entrypoint" ]
 CMD [ "sage" ]
