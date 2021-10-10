@@ -2,8 +2,9 @@
 
 set -e
 
-tar xzf tcl*gz
-tar xzf tk*gz
+tar xzf tcl8*gz
+tar xzf tk8*gz
+tar xzf tki*gz
 
 export CFLAGS="$CFLAGS -DSQLITE_USE_URI=1"
 
