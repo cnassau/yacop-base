@@ -1,0 +1,19 @@
+# a variant of the base image that uses the ubuntu system Tcl/Tk + python3/tkinter 
+
+ARG BASE_IMAGE sagemath/sagemath
+FROM $BASE_IMAGE
+
+LABEL maintainer="Christian Nassau <nassau@nullhomotopie.de>"
+
+USER sage
+#ENV HOME /home/sage
+#WORKDIR /home/sage
+ADD --chown=sage yacop-base /tmp/yacop-base
+RUN echo "Installing the Steenrod library and its dependencies" \
+    && cd /tmp/yacop-base && sage -sh spkg-install-system \
+    && echo "Starting Sage once" && echo "quit();" | sage \
+    && echo "Cleaning up" \
+    && rm -rf /tmp/* \
+    && sync 
+
+CMD [ "sage" ]

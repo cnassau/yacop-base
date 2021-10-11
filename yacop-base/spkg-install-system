@@ -1,0 +1,25 @@
+#!/bin/sh
+
+set -e
+
+echo "Compiling Steenrod Tcl library"
+tar xzf Steenrod*tar.gz
+(cd steenrod*
+    ./configure
+    make
+    make install
+    )
+
+#echo "Installing BWidget-1.8.0"
+#cp -rf BWidget-1.8.0 $SAGE_LOCAL/lib 
+
+TCLLIB=$(echo "puts [info lib]" | tclsh) 
+
+echo "Installing BWidget"
+tar xzf bwidget* -C $TCLLIB
+
+echo "Installing pdf4tcl"
+tar xzf pdf4tcl* -C $TCLLIB
+
+echo "Done"
+
