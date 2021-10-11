@@ -7,7 +7,7 @@ tar xzf Steenrod*tar.gz
 (cd steenrod*
     ./configure
     make
-    make install
+    sudo make install
     )
 
 #echo "Installing BWidget-1.8.0"
@@ -16,10 +16,10 @@ tar xzf Steenrod*tar.gz
 TCLLIB=$(echo "puts [info lib]" | tclsh) 
 
 echo "Installing BWidget"
-tar xzf bwidget* -C $TCLLIB
+sudo tar xzf bwidget* -C $TCLLIB
 
 echo "Installing pdf4tcl"
-tar xzf pdf4tcl* -C $TCLLIB
+sudo tar xzf pdf4tcl* -C $TCLLIB
 
 echo "Done"
 
