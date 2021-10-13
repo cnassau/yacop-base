@@ -4,15 +4,16 @@ set -e
 
 TCLLIB=$SAGE_LOCAL/tcl
 
+sudo mkdir -p $TCLLIB/lib/
+
 echo "Compiling Steenrod Tcl library"
 tar xzf Steenrod*tar.gz
 (cd steenrod*
-    ./configure --prefix=$SAGE_LOCAL/lib/tcl
+    ./configure --prefix=$SAGE_LOCAL/tcl/
     make
     sudo make install
     )
 
-sudo mkdir -p $TCLLIB/lib
 cp -ar /usr/lib/Steenrod* $TCLLIB/lib
 
 echo "Installing BWidget"
