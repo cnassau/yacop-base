@@ -13,7 +13,7 @@ tar xzf Steenrod*tar.gz
     )
 
 sudo mkdir -p $TCLLIB/lib
-cp -ar /usr/lib/Steenrod* TCLLIB/lib
+cp -ar /usr/lib/Steenrod* $TCLLIB/lib
 
 echo "Installing BWidget"
 sudo tar xzf bwidget* -C $TCLLIB/lib
